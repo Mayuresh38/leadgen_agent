@@ -1,0 +1,31 @@
+[0:00 — HOOK]
+Hello, and welcome. Today, we're looking at a major bottleneck in B2B sales operations: sorting through the noise of inbound lead emails while keeping sensitive customer data completely secure. I'd like to show you the Leadgen-Agent, a secure, automated lead triage system.
+
+[0:20 — WHAT IT IS]
+The Leadgen-Agent is an automated inbound lead processor built using the Google Agent Development Kit 2.0. It belongs to the customer service and sales automation track, designed to pre-filter, parse, score, and register business leads directly in a simulated CRM database, entirely on autopilot.
+
+[0:40 — SHOW THE BANNER]
+(show assets/cover_page_banner.png)
+As you can see on the project banner, our solution is built on three main pillars: complete automation, built-in PII and competitor security, and intelligent B2B lead scoring. It transforms inbound emails into prioritized sales opportunities in real-time. (pause)
+
+[1:00 — ARCHITECTURE]
+(show assets/architecture_diagram.png)
+Let's take a look at the system architecture. When a lead email comes in, it first enters the security checkpoint node. Here, it is scrubbed for PII like credit cards and SSNs, and audited for competitor domains or prompt injections. (pause)
+If it is safe, it passes to the lead coordinator. This is our orchestrator LLM agent. It runs a ReAct loop to call specialized sub-agents: the email parser, which extracts contact and company details, and the lead scorer, which queries company profiles and scores the lead out of 100. (pause)
+The lead coordinator also connects directly to our Model Context Protocol CRM server to query and save records. (pause)
+Next, the routing node directs the lead. Borderline leads scored between 40 and 69 are sent to a human review node, which pauses the workflow for administrator approval. High-quality leads are automatically approved and routed to the final output node to generate the report. (pause)
+
+[2:00 — LIVE DEMO]
+(switch to playground at localhost:18081)
+Now, let's see it in action. I'll paste our first test case: an email from Alice Smith at Google requesting 500 software licenses with a fifty thousand dollar budget. (pause)
+I'll send it. As you can see, it runs through the security checkpoint, evaluates successfully, and scores the lead at 85 out of 100. The coordinator automatically calls the simulated CRM MCP tool and inserts the lead as Approved. (pause)
+Let's paste our second case:Apex Solutions researching 50 seats with no budget. (pause)
+When we run this, the lead is scored at 55. The routing node detects a borderline score, and the workflow instantly pauses, showing a human review prompt in the playground. I'll type 'yes' to approve it, and the run finishes successfully. (pause)
+Finally, let's test a competitor email from competitor.com. As soon as I send it, the security checkpoint immediately blocks the lead without calling any AI models, displaying a clear security warning. (pause)
+
+[3:00 — SECURITY & MCP]
+Our security checkpoint is a crucial control, ensuring that prompt injections are blocked, SSNs and credit cards are redacted, and JSON audit logs are outputted for compliance. (pause)
+The MCP server cleanly separates our database operations from the model code using standard tools like search CRM and create or update CRM lead.
+
+[3:30 — IMPACT / CLOSE]
+By automating this pipeline, we eliminate manual triage for SDRs, ensure enterprise compliance, and drastically reduce the speed-to-lead response time. Thank you for watching.

@@ -146,3 +146,8 @@ graph TD
 
 ### Workflow Architecture Diagram
 ![Workflow Architecture Diagram](assets/architecture_diagram.png)
+
+---
+
+## 🎙️ Demo Script
+The spoken narration script for presenting this project can be found in [DEMO_SCRIPT.txt](DEMO_SCRIPT.txt). It provides a conversational 3-minute walkthrough synchronized with the workflow diagrams and live test runs.
