@@ -136,3 +136,13 @@ graph TD
    .env          ← your API key — must NEVER be pushed
    .venv/
    ```
+
+---
+
+## 🖼️ Assets
+
+### Project Cover Banner
+![Project Cover Banner](assets/cover_page_banner.png)
+
+### Workflow Architecture Diagram
+![Workflow Architecture Diagram](assets/architecture_diagram.png)
